@@ -14,22 +14,27 @@ class BuatJurnalPage extends StatefulWidget {
 }
 
 class _BuatJurnalPageState extends State<BuatJurnalPage> {
-
   String kelas = '';
   String mapel = '';
   int jamKe = 0;
   String tujuanPembelajaran = '';
+  String materiTopik = '';
 
   void simpanJurnal(BuildContext context) {
     Jurnal j = Jurnal(
-      kelas: this.kelas,
-      mapel: this.mapel,
-      jamKe: this.jamKe,
-      tujuanPembelajaran: this.tujuanPembelajaran,
+      kelas: kelas,
+      mapel: mapel,
+      jamKe: jamKe,
+      tujuanPembelajaran: tujuanPembelajaran,
+      materiTopik: materiTopik,
     );
 
     DataProvider dp = context.read<DataProvider>();
     dp.tambahJurnal(j);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Jurnal berhasil disimpan.')),
+    );
   }
 
   Widget _textArea(String label, String info, Function(String) onChanged) {
@@ -120,6 +125,10 @@ class _BuatJurnalPageState extends State<BuatJurnalPage> {
 
               SizedBox(height: 10),
 
+              _textArea('Materi Topik', 'Masukkan materi topik', (value) => setState(() => materiTopik = value)),
+
+              SizedBox(height: 10),
+
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -127,7 +136,6 @@ class _BuatJurnalPageState extends State<BuatJurnalPage> {
                   child: Text('Simpan')
                 ),
               )
-              
             ],
           ),
         ),

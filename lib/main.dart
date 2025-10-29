@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'MyDJ',
 
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 0, 255)),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 137, 137)),
         ),
 
         home: const SimpleHomePage(title: 'Jurnal Harian Guru')
